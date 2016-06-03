@@ -4,6 +4,11 @@
   <meta charset="utf-8">
   
   
+  <meta name="description" content="本文相当干货，包含数学应用技巧。
+前些日子，老大让各种小弟学习OpenGL渲染等等，一个主要的大作业就是用OpenGL绘制会旋转的魔方。
+大体的思路就是画三角形面=》两个三角形面形成一个正方形面=》6个正方形面旋转位移形成小立方体=》多个小立方体位移得到魔方
+静态的魔方绘制起来没啥难度，但是要做随机" />
+  
 
   
   
@@ -11,17 +16,30 @@
   
   
   
-  <title>天师的博客</title>
+  <title>如何使用GLM完成魔方旋转的编号重排 | 天师的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="天师的博客">
-<meta property="og:url" content="http://0871087123.github.io/index.html">
+  <meta name="description" content="本文相当干货，包含数学应用技巧。
+前些日子，老大让各种小弟学习OpenGL渲染等等，一个主要的大作业就是用OpenGL绘制会旋转的魔方。
+大体的思路就是画三角形面=》两个三角形面形成一个正方形面=》6个正方形面旋转位移形成小立方体=》多个小立方体位移得到魔方
+静态的魔方绘制起来没啥难度，但是要做随机方向和层的魔方旋转，问题就出来了。
+假设只是2x2x2的2阶魔方，设上层左上角的方块编号为1，上层顺">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何使用GLM完成魔方旋转的编号重排">
+<meta property="og:url" content="http://0871087123.github.io/2016/06/03/如何使用GLM完成魔方旋转的编号重排/index.html">
 <meta property="og:site_name" content="天师的博客">
-<meta property="og:description">
+<meta property="og:description" content="本文相当干货，包含数学应用技巧。
+前些日子，老大让各种小弟学习OpenGL渲染等等，一个主要的大作业就是用OpenGL绘制会旋转的魔方。
+大体的思路就是画三角形面=》两个三角形面形成一个正方形面=》6个正方形面旋转位移形成小立方体=》多个小立方体位移得到魔方
+静态的魔方绘制起来没啥难度，但是要做随机方向和层的魔方旋转，问题就出来了。
+假设只是2x2x2的2阶魔方，设上层左上角的方块编号为1，上层顺">
+<meta property="og:updated_time" content="2016-06-03T07:56:43.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="天师的博客">
-<meta name="twitter:description">
+<meta name="twitter:title" content="如何使用GLM完成魔方旋转的编号重排">
+<meta name="twitter:description" content="本文相当干货，包含数学应用技巧。
+前些日子，老大让各种小弟学习OpenGL渲染等等，一个主要的大作业就是用OpenGL绘制会旋转的魔方。
+大体的思路就是画三角形面=》两个三角形面形成一个正方形面=》6个正方形面旋转位移形成小立方体=》多个小立方体位移得到魔方
+静态的魔方绘制起来没啥难度，但是要做随机方向和层的魔方旋转，问题就出来了。
+假设只是2x2x2的2阶魔方，设上层左上角的方块编号为1，上层顺">
   
   
     <link rel="icon" href="/css/images/favicon.ico">
@@ -63,17 +81,15 @@
     </nav>
 </header>
       <div id="main" class="wrapper">
-        <div id="primary" class="site-content"><div id="content" role="main">
-  
-    <article id="post-如何使用GLM完成魔方旋转的编号重排" class="post-如何使用GLM完成魔方旋转的编号重排 post type-post status-publish format-standard hentry">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-如何使用GLM完成魔方旋转的编号重排" class="post-如何使用GLM完成魔方旋转的编号重排 post type-post status-publish format-standard hentry">
     <!---->
 
       <header class="entry-header">
         
         
   
-    <h1 class="entry-title">
-      <a class="article-title" href="/2016/06/03/如何使用GLM完成魔方旋转的编号重排/">如何使用GLM完成魔方旋转的编号重排</a>
+    <h1 class="entry-title article-title">
+      如何使用GLM完成魔方旋转的编号重排
     </h1>
   
 
@@ -122,55 +138,20 @@
 </article>
 
 
-
-
-
-
-  
-    <article id="post-hello-world" class="post-hello-world post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2016/06/03/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://0871087123.github.io/2016/06/03/hello-world/" data-id="ciozftbo3000037f79rfrb87q" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <p>第一次尝试用Hexo写点博客什么的，先看看再说了。</p>
-
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2016/06/03/hello-world/">
-    <time datetime="2016-06-03T06:58:24.000Z" class="entry-date">
-        2016-06-03
-    </time>
-</a>
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
     
     
-    </footer>
-</article>
+        <span class="nav-next"><a href="/2016/06/03/hello-world/" rel="next">Hello World <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
 
 
 
 
 
 
-  
-  
 
 </div></div>
         <div id="secondary" class="widget-area" role="complementary">
